@@ -1,20 +1,22 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-
 import 'package:model/pages/home_page.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // Import nécessaire
 
 void main() {
+  // INDISPENSABLE POUR WINDOWS
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget { // Plus simple en Stateless
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -22,4 +24,4 @@ class _MyAppState extends State<MyApp> {
       home: HomePage(),
     );
   }
-} // Import FFI
+}
