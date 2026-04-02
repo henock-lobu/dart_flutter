@@ -1,12 +1,9 @@
-import 'dart:io'; // Pour Platform
+import 'dart:io';
 import 'package:flutter/material.dart';
-  //import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // Sera corrigé après 'pub get'
-import 'package:model/pages/home_page.dart'; // ATTENTION : vérifiez ce chemin !
+
+import 'package:model/pages/home_page.dart';
 
 void main() {
-
-
-
   runApp(const MyApp());
 }
 
